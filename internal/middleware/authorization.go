@@ -6,6 +6,7 @@ import (
 
 	log "github.com/sirupsen/logrus"
 	"github.com/yaredow/goapi/api"
+	"github.com/yaredow/goapi/internal/tools"
 )
 
 var UnauthorizedError = errors.New("Invalid username or token")
@@ -30,7 +31,7 @@ func Authorization(next http.Handler) http.Handler {
 		}
 
 		var logInDetails *tools.LoginDetails
-		logInDetails = (*&database).GetUserLoginDetails(username)
+		logInDetails = (*database).GetUserLoginDetails(username)
 
 		if logInDetails == nil || (token != (*logInDetails).AuthToken) {
 			log.Error(UnauthorizedError)

@@ -5,11 +5,11 @@ import (
 	"net/http"
 )
 
-type coinBalance struct {
+type CoinBalanceParams struct {
 	Username string
 }
 
-type coinBalanceResponse struct {
+type CoinBalanceResponse struct {
 	Code    int
 	Balance int64
 }
